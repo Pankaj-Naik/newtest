@@ -155,15 +155,6 @@
 		    	saveNewBuilder();
 		    })
 		    function saveNewBuilder(){
-		    	
-		    var cname=[];
-		    var cno=[];
-		    var cemail=[];
-		    	for(int i=0;i<batch_count;i++){
-		    		cname[i]=$("#cname-"+batch_count).val();
-		    		cno[i]=$("#contact-"+batch_count).val();
-		    		cemail[i]=$("#cemail-"+batch_count).val();
-		    	}
 		    	alert("Hi from save");
 		    }
 		    </script>
