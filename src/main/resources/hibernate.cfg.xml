@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+
+"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.username">root</property>
+        <!-- <property name="hibernate.connection.password">Freight@123#</property>-->
+          <property name="hibernate.connection.password">root</property>
+
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/blue_pigeon</property>
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        
+        <property name="hibernate.cache.use_second_level_cache">false</property>
+		<property name="hibernate.cache.use_query_cache">false</property>
+		<property name="hibernate.cache.provider_class">org.hibernate.cache.HashtableCacheProvider</property>
+		<property name="current_session_context_class">thread</property>
+		<property name="current_session_context_class">org.hibernate.context.ManagedSessionContext</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
+        <property name="net.sf.ehcache.configurationResourceName">/ehcache.xml</property>
+        <property name="hibernate.connection.pool_size">25</property>
+        <property name="show_sql">false</property>
+
+
+        <mapping class="org.bluepigeon.admin.model.AdminUser"></mapping>
+        <mapping class="org.bluepigeon.admin.model.AdminUserRole"></mapping>
+		<mapping class="org.bluepigeon.admin.model.Country"></mapping>
+		<mapping class="org.bluepigeon.admin.model.State"></mapping>
+		<mapping class="org.bluepigeon.admin.model.City"></mapping>
+		<mapping class="org.bluepigeon.admin.model.Locality"></mapping>
+		<!-- <mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenetiesStagesAndSubStages"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenetiesType"></mapping>-->
+		<mapping class="org.bluepigeon.admin.model.BuilderBuildingStatus"></mapping>
+			<mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenity"></mapping> 
+		<mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenityStages"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenitySubstages"></mapping> 
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderBuildingStagesAndSubStages"></mapping> -->
+		<mapping class="org.bluepigeon.admin.model.BuilderCompany"></mapping>
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderFlatAmenitiesStagesAndSubStages"></mapping> -->
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderFlatAmenitiesType"></mapping> -->
+		<mapping class="org.bluepigeon.admin.model.BuilderFlatStatus"></mapping>
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderFloorAmenitiesType"></mapping> -->
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderFloorAmenityStagesAndSubStages"></mapping> -->
+		<mapping class="org.bluepigeon.admin.model.BuilderGroup"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderOverallProjectStagesAndSubStages"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderPaymentStagesAndSubStages"></mapping>
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderProjectAmenityStagesAndSubStages"></mapping> -->
+<!-- 		<mapping class="org.bluepigeon.admin.model.BuilderProjectAminityType"></mapping> -->
+
+ <mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenity"></mapping> 
+<mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenityStages"></mapping> 
+<mapping class="org.bluepigeon.admin.model.BuilderBuildingAmenitySubstages"></mapping>
+
+		<mapping class="org.bluepigeon.admin.model.BuilderProjectApprovalType"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderProjectLevel"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderProjectPropertyConfiguration"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderProjectStatus"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderProjectType"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderPropertyType"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderSellerType"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderTaxType"></mapping>
+		<mapping class="org.bluepigeon.admin.model.Builder"></mapping>
+		<mapping class="org.bluepigeon.admin.model.BuilderCompanyNames"></mapping>
+    </session-factory>
+
+</hibernate-configuration>
