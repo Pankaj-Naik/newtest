@@ -75,6 +75,22 @@ public class BuilderBuildingAmenityStagesDAO {
 		}
         return response;
     }
+    public ResponseMessage delete(BuilderBuildingAmenityStages builderBuildingAmenityStages) {
+		ResponseMessage response = new ResponseMessage();
+		HibernateUtil hibernateUtil = new org.bluepigeon.admin.util.HibernateUtil();
+		String hql = "delete from BuilderBuildingAmenityStages where id = :id";
+		Session session = hibernateUtil.openSession();
+		session.beginTransaction();
+		Query query = session.createQuery(hql);
+		query.setParameter("id", builderBuildingAmenityStages.getId());
+		query.executeUpdate();
+		session.getTransaction().commit();
+		session.close();
+		response.setStatus(1);
+		response.setMessage("Success");
+
+		return response;
+	}
     
     /**
      * Get All Building amenity stages    

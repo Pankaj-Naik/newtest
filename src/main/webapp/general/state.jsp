@@ -1,13 +1,5 @@
-
-<%@page import="org.bluepigeon.admin.data.StateData"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set var="req" value="${pageContext.request}" />
-<c:set var="url">${req.requestURL}</c:set>
-<c:set var="uri" value="${req.requestURI}" />
-<c:set var="baseUrl" value="${fn:substring(url, 0, fn:length(url) - fn:length(uri))}${req.contextPath}" />
 <%@page import="org.bluepigeon.admin.dao.CountryDAOImp"%>
 <%@page import="org.bluepigeon.admin.model.Country"%>
 <%@page import="org.bluepigeon.admin.model.State"%>
@@ -16,25 +8,22 @@
 <%@include file="../head.jsp"%>
 <%@include file="../leftnav.jsp"%>
 <%
-int state_id=0;
-int country_size = 0;
-int state_size = 0;
-int country_id = 0;
+int country_id=0;
+int country_size=0;
 List<State> state_list = null;
 List<Country> country_list = null;
-CountryDAOImp countryService = new CountryDAOImp();
-List<Country> listCountry = countryService.getCountryList();
-StateImp stateList = new StateImp();
-country_size = listCountry.size(); 
+int state_size=0;
 if (request.getParameterMap().containsKey("country_id")) {
-  country_id = Integer.parseInt(request.getParameter("country_id"));
-  state_size = state_list.size(); 
-  if(country_size > 0) {
-	  country_id = state_list.get(0).getCountry().getId();
-	  if(country_id>0)
-	  state_list = stateList.getStateByCountryId(country_id);
-  }
+	country_id = Integer.parseInt(request.getParameter("country_id"));
+	
+	if (country_id > 0) {
+		state_list = new StateImp().getStateByCountryId(country_id);
+		state_size = state_list.size(); 
+	}
 }
+
+country_list = new CountryDAOImp().getCountryList();
+country_size = country_list.size();
 %>
 <div class="main-content">
 	<div class="main-content-inner">
@@ -66,9 +55,9 @@ if (request.getParameterMap().containsKey("country_id")) {
 						                <label class="col-sm-4 control-label">Select Country</label>
 						                <div class="col-sm-8">
 							                <select name="searchcountryId" id="searchcountryId" class="form-control">
-							                    <option value="">Select Country</option>
+							                    <option value="0">Select Country</option>
 							                    <% for(int i=0; i < country_size ; i++){ %>
-												<option value="<% out.print(listCountry.get(i).getId());%>" <% if(country_id == listCountry.get(i).getId()) { %>selected<% } %>><% out.print(listCountry.get(i).getName());%></option>
+												<option value="<% out.print(country_list.get(i).getId());%>" <% if(country_id == country_list.get(i).getId()) { %>selected<% } %>><% out.print(country_list.get(i).getName());%></option>
 												<% } %>
 							                </select>
 						                </div>
@@ -121,7 +110,7 @@ if (request.getParameterMap().containsKey("country_id")) {
                        		<select name="country_id" id="country_id" class="form-control">
 								<option value=""> Select Country </option>
 								<% for(int i=0; i < country_size ; i++){ %>
-								<option value="<% out.print(listCountry.get(i).getId());%>"><% out.print(listCountry.get(i).getName());%></option>
+								<option value="<% out.print(country_list.get(i).getId());%>"><% out.print(country_list.get(i).getName());%></option>
 								<% } %>
 							</select>
                   		</div>
@@ -192,10 +181,6 @@ $("#searchcountryId").change(function(){
 		$("#searchstateId").html(html);
 	},'json');*/
 	
-	window.location.href = "${baseUrl}/general/state.jsp?country_id="+$("#searchcountryId").val();
-});
-
-$("#searchstateId").change(function(){
 	window.location.href = "${baseUrl}/general/state.jsp?country_id="+$("#searchcountryId").val();
 });
 

@@ -115,6 +115,60 @@ public class CreateProjectController {
 	@POST
 	@Path("/builder/building/amenity/stages/update")
 	@Produces(MediaType.APPLICATION_JSON)
+	public ResponseMessage updateBuilderBuildingAmenityStages(@FormParam("amenity_id") int amenityId,@FormParam("id") int id, @FormParam("name") String name,
+			@FormParam("status") byte status) {
+		
+		BuilderBuildingAmenity builderBuildingAmenity = new BuilderBuildingAmenity();
+		builderBuildingAmenity.setId(amenityId);
+		
+		BuilderBuildingAmenityStages builderBuildingAmenityStages = new BuilderBuildingAmenityStages();
+		builderBuildingAmenityStages.setId(id);
+		builderBuildingAmenityStages.setName(name);
+		builderBuildingAmenityStages.setStatus(status);
+		builderBuildingAmenityStages.setBuilderBuildingAmenity(builderBuildingAmenity);
+		BuilderBuildingAmenityStagesDAO builderBuildingAmenityStagesDAO = new BuilderBuildingAmenityStagesDAO();
+		return builderBuildingAmenityStagesDAO.update(builderBuildingAmenityStages);
+	}
+	
+	@DELETE
+	@Path("/builder/building/amenity/stages/delete")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ResponseMessage deleteBuilderBuildingAmenityStages(@FormParam("amenity_substage_id") int amenityid) {
+		
+		BuilderBuildingAmenityStages builderBuildingAmenity = new BuilderBuildingAmenityStages();
+		builderBuildingAmenity.setId(amenityid);
+		BuilderBuildingAmenityStagesDAO builderBuildingAmenityDAO  = new BuilderBuildingAmenityStagesDAO();
+		return builderBuildingAmenityDAO.delete(builderBuildingAmenity);
+	}
+	
+	@GET
+	@Path("/builder/building/amenity/stages/list")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<BuilderBuildingAmenityStages> getBuilderBuildingAmenityStages(@QueryParam("amenity_id") int amenity_id) {
+		BuilderBuildingAmenityStagesDAO builderBuildingAmenityStagesDAO = new BuilderBuildingAmenityStagesDAO();
+		return builderBuildingAmenityStagesDAO.getStateByAmenityId(amenity_id);
+	}
+	
+	@POST
+	@Path("/builder/building/amenity/stages/save")
+	@Produces(MediaType.APPLICATION_JSON)
+	public ResponseMessage addBuilderBuildingAmenityStages(@FormParam("amenity_id") int amenityId,@FormParam("name") String name, @FormParam("status") byte status) {
+		
+		BuilderBuildingAmenity builderBuildingAmenity = new BuilderBuildingAmenity();
+		builderBuildingAmenity.setId(amenityId);
+		
+		BuilderBuildingAmenityStages builderBuildingAmenityStages = new BuilderBuildingAmenityStages();
+
+		builderBuildingAmenityStages.setName(name);
+		builderBuildingAmenityStages.setStatus(status);
+		builderBuildingAmenityStages.setBuilderBuildingAmenity(builderBuildingAmenity);
+		BuilderBuildingAmenityStagesDAO builderBuildingAmenityStagesDAO = new BuilderBuildingAmenityStagesDAO();
+		return builderBuildingAmenityStagesDAO.save(builderBuildingAmenityStages);
+	}
+
+	@POST
+	@Path("/builder/building/amenity/stages/update")
+	@Produces(MediaType.APPLICATION_JSON)
 	public ResponseMessage updateBuilderBuildingAmenityStages(@FormParam("amenityid") int amenityId,@FormParam("id") int id, @FormParam("name") String name,
 			@FormParam("status") byte status) {
 		
