@@ -421,6 +421,13 @@
 	<li class=""><a href="${baseUrl}/createprojects/builder-building-amenity.jsp"> <i
 				class="menu-icon fa fa-caret-right"></i> Building amenity
 		</a> <b class="arrow"></b></li>
+			<li class=""><a href="${baseUrl}/createprojects/builder-building-amenity-stages.jsp"> <i
+				class="menu-icon fa fa-caret-right"></i> Building amenity stages
+		</a> <b class="arrow"></b></li>
+		</a> <b class="arrow"></b></li>
+			<li class=""><a href="${baseUrl}/createprojects/builder-building-amenity-substages.jsp"> <i
+				class="menu-icon fa fa-caret-right"></i> Building amenity sub stages
+		</a> <b class="arrow"></b></li>
 			<li class=""><a href="${baseUrl}/createprojects/builder-flat-status.jsp"> <i
 				class="menu-icon fa fa-caret-right"></i> Flat status
 		</a> <b class="arrow"></b></li>
